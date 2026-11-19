@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- A medieval diving mask. On the eyes (vanilla's EyeCover layer, Eyes group), so it combines with any hat or helmet; it only
+       conflicts with other eye coverings such as Ideology's blindfold. Raises dive success, which raises each dive's catch
+       chance and lengthens each dive. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_GlassMask</defName>
+    <label>glass mask</label>
+    <description>A pane of clear glass set in a steel frame, sealed to the face with a cloth-wrapped rim. Underwater it lets a diver see fish clearly, so each dive is more likely to land one. It does nothing on land.</description>
+    <graphicData>
+      <!-- Approved art; see art/glass-mask/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/GlassMask/GlassMask</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <costList>
+      <Steel>20</Steel>
+      <Cloth>5</Cloth>
+    </costList>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <WorkToMake>3000</WorkToMake>
+      <Mass>0.4</Mass>
+      <Flammability>0.2</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_DiveSuccess>0.2</Spearfishing_DiveSuccess>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <!-- Worn on the face: _south, _east and _north head textures. Skip flags as vanilla's EyeCover blindfold (Ideology), so
+           hair and beard still draw. Unlike the blindfold (61, under hair), the mask draws at 63, over the hair (62): a
+           blindfold is a band that a fringe hides, but a fringe drawn over the glass looked like hair inside the mask. Head
+           wounds (65) stay over it and the snorkels (64) go over it. From behind it is 66, still over the hair, so a
+           face-down floater (ticket 18) shows the strap. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/GlassMask/GlassMask</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>63</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>66</layer>
+        </dataNorth>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <!-- No apparel tags: pawn generation must not hand masks to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>FueledSmithy</li>
+        <li>ElectricSmithy</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+      <displayPriority>251</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The industrial wetsuit (gear-tiers ticket 05). The basic wetsuit's layer and body parts, so the two can't be worn together,
+       and it still goes under any jacket, parka or armour. A fixed material: neoprene stands in for chemfuel-made rubber, with
+       cloth for the lining and a component for the zip and seals, so it has no stuff and its textures carry their own colour.
+       Waves' water insulation 20, twice the basic suit's 10, lowers Waves' water cold limit by 20 degrees. Needs Spearfishing and
+       Biofuel refining, the refinery that makes chemfuel (ADR 0012). -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_NeopreneWetsuit</defName>
+    <label>neoprene wetsuit</label>
+    <description>A close-fitting suit of foamed neoprene over a cloth lining, with sealed seams and a back zip, covering the body, arms and legs. Ordinary clothing keeps nobody warm in the sea. The foam traps the diver's own heat far better than the leather of a basic wetsuit, so a diver in one can work water ten degrees colder before hypothermia sets in. It can be worn under a jacket or parka, but not with another wetsuit.\n\nNeeds the Spearfishing and Biofuel refining research.</description>
+    <graphicData>
+      <!-- Approved art; see art/neoprene-wetsuit/APPROVAL.md. Coloured in the texture: no stuff, no tint. -->
+      <texPath>Things/Spearfishing/Apparel/NeopreneWetsuit/NeopreneWetsuit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costList>
+      <Chemfuel>40</Chemfuel>
+      <Cloth>30</Cloth>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>160</MaxHitPoints>
+      <WorkToMake>12000</WorkToMake>
+      <Mass>1.5</Mass>
+      <Flammability>0.6</Flammability>
+      <ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>0</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Waves_WaterInsulation>20</Waves_WaterInsulation>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <!-- One worn texture per adult body type: NeopreneWetsuit_<BodyType>_<dir>. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/NeopreneWetsuit/NeopreneWetsuit</wornGraphicPath>
+      <!-- No apparel tags: pawn generation must not hand wetsuits to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>BiofuelRefining</li>
+      </researchPrerequisites>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers Inherit="False">
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <displayPriority>253</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

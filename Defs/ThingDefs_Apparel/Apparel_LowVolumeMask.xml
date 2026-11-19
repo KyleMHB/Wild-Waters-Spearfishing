@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The industrial mask (gear tiers ticket 03). The glass mask's slots (EyeCover layer, Eyes group), so the two are never worn
+       together, while the snorkel (Mouth group) and any hat or helmet (Overhead) still combine with it. Needs Spearfishing and
+       Machining (ADR 0012), made at the machining table from pressed steel, glass and chemfuel rubber. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_LowVolumeMask</defName>
+    <label>low-volume mask</label>
+    <description>Two small tempered glass lenses in a pressed steel frame, sealed to the face by a skirt of chemfuel rubber. The lenses sit close to the eyes, so the diver sees more of the sea and the mask holds little air to equalize. Raises dive success by more than the glass mask does, so divers land more fish. It does nothing on land.\n\nNeeds the Spearfishing and Machining research.</description>
+    <graphicData>
+      <!-- Approved art; see art/low-volume-mask/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/LowVolumeMask/LowVolumeMask</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costList>
+      <Steel>25</Steel>
+      <Chemfuel>15</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToMake>4500</WorkToMake>
+      <Mass>0.35</Mass>
+      <Flammability>0.4</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_DiveSuccess>0.35</Spearfishing_DiveSuccess>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Eyes</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <!-- Worn on the face: _south, _east and _north head textures, drawn as the glass mask is (layer 63, over the hair at 62 so a
+           fringe never covers the lenses, and 66 from behind, so the strap shows over the hair on a face-down floater; the
+           snorkels and rebreather at 64 and 67 go over it). -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/LowVolumeMask/LowVolumeMask</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>63</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>66</layer>
+        </dataNorth>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <!-- No apparel tags: pawn generation must not hand masks to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>Machining</li>
+      </researchPrerequisites>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <displayPriority>253</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

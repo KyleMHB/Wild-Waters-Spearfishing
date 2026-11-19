@@ -1,0 +1,7 @@
+<Project>
+  <!-- Each game version restores and compiles separately, so its intermediates need their own folder. -->
+  <PropertyGroup>
+    <RimWorldVersion Condition="'$(RimWorldVersion)' == ''">1.7</RimWorldVersion>
+    <BaseIntermediateOutputPath>..\work\obj\$(RimWorldVersion)\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>

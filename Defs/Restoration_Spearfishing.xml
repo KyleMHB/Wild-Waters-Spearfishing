@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Habitat restoration (fish recovery ticket 03). -->
+  <DesignationDef>
+    <defName>Spearfishing_RestoreSeaFloor</defName>
+    <texturePath>Designations/Spearfishing_RestoreSeaFloor</texturePath>
+    <targetType>Cell</targetType>
+  </DesignationDef>
+
+  <!-- Spearfishing work using Plants: before trips in the work type, so marked floor is restored when a diver could do both. -->
+  <WorkGiverDef>
+    <defName>Spearfishing_RestoreSeaFloor</defName>
+    <label>restore sea floor</label>
+    <giverClass>Spearfishing.WorkGiver_RestoreSeaFloor</giverClass>
+    <workType>Spearfishing</workType>
+    <verb>restore</verb>
+    <gerund>restoring</gerund>
+    <priorityInType>60</priorityInType>
+    <!-- It scans the marked cells, not things. -->
+    <scanThings>false</scanThings>
+    <scanCells>true</scanCells>
+    <requiredCapacities>
+      <li>Manipulation</li>
+      <li>Moving</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>Spearfishing_RestoreSeaFloorJob</defName>
+    <driverClass>Spearfishing.JobDriver_RestoreSeaFloor</driverClass>
+    <reportString>restoring the sea floor.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+</Defs>

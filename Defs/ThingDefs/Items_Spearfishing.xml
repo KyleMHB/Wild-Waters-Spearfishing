@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The catch without Odyssey: one generic raw fish per catch. It is raw meat (MeatRaw), so recipes, food policies and
+       stockpiles treat it like any other meat. -->
+  <ThingDef ParentName="ResourceBase">
+    <defName>Spearfishing_RawFish</defName>
+    <label>raw fish</label>
+    <description>A whole fish, freshly speared. It can be eaten raw, but it is much better cooked.</description>
+    <graphicData>
+      <texPath>Things/Spearfishing/Item/RawFish</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <stackLimit>25</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <MarketValue>5</MarketValue>
+      <Mass>0.4</Mass>
+      <Nutrition>0.2</Nutrition>
+      <Flammability>0.5</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+      <FoodPoisonChanceFixedHuman>0.02</FoodPoisonChanceFixedHuman>
+    </statBases>
+    <thingCategories>
+      <li>MeatRaw</li>
+    </thingCategories>
+    <ingestible>
+      <foodType>Meat</foodType>
+      <preferability>RawBad</preferability>
+      <tasteThought>AteRawFood</tasteThought>
+      <ingestEffect>EatMeat</ingestEffect>
+      <ingestSound>RawMeat_Eat</ingestSound>
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>2</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

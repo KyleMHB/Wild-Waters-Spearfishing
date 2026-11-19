@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Swim speed starts at a neutral 100%, and gear raises it through ordinary equippedStatOffsets, so other mods can add
+       their own offsets or factors. It reaches Move Speed through StatPart_SwimSpeed (ADR 0005). Endurance and warmth in the
+       water are Waves' own stats, Waves_SwimStamina and Waves_WaterInsulation (ADR 0011). -->
+  <StatDef>
+    <defName>Spearfishing_SwimSpeed</defName>
+    <label>swim speed</label>
+    <description>How fast this person swims in open water. Move speed is multiplied by this while they are in sea, lake or river water deep enough to swim in. The water still slows every swimmer, so this speeds up the strokes, not the whole crossing.</description>
+    <category>BasicsPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>2490</displayPriorityInCategory>
+  </StatDef>
+</Defs>

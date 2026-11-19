@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Fins get a layer of their own, so no ordinary clothing (or a mod's boots on the feet) ever conflicts with them. -->
+  <ApparelLayerDef>
+    <defName>Spearfishing_Fins</defName>
+    <label>fins</label>
+    <drawOrder>50</drawOrder>
+  </ApparelLayerDef>
+  <!-- The buoy's line ties at the waist; its own layer keeps belts, packs and shield belts wearable with it. -->
+  <ApparelLayerDef>
+    <defName>Spearfishing_Buoy</defName>
+    <label>buoy</label>
+    <drawOrder>55</drawOrder>
+  </ApparelLayerDef>
+</Defs>

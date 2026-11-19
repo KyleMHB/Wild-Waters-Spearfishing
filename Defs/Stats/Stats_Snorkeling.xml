@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- On a pawn (ticket 17): how much recreation snorkeling gives, and how long a session lasts. Neutral at their base; the
+       snorkel raises both through ordinary equippedStatOffsets, so other mods can add their own. -->
+  <StatDef>
+    <defName>Spearfishing_SnorkelingEnjoyment</defName>
+    <label>snorkeling enjoyment</label>
+    <description>How much recreation this person gets from snorkeling. Recreation gained while snorkeling is multiplied by it.</description>
+    <category>BasicsPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>2487</displayPriorityInCategory>
+  </StatDef>
+
+  <!-- In hours in the water: 1 hour is 2,500 ticks (DiveRules.TicksPerHour). -->
+  <StatDef>
+    <defName>Spearfishing_SnorkelingSession</defName>
+    <label>snorkeling session</label>
+    <description>How long this person can snorkel before heading back to shore, counted in hours in the water.</description>
+    <category>BasicsPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>FloatOne</toStringStyle>
+    <formatString>{0} h</formatString>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>2486</displayPriorityInCategory>
+  </StatDef>
+</Defs>

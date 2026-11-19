@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Spacer fins (gear tiers, ticket 08). Same layer and body part group as the wooden and plastic fins, so no two pairs can be
+       worn together. Plasteel and an advanced component, no synthread (decisions.md), made at the fabrication bench where the
+       other spacer gear is made. Needs Spearfishing and Advanced fabrication (ADR 0012). -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_LongCarbonFins</defName>
+    <label>long carbon fins</label>
+    <description>A pair of long, narrow blades of black carbon composite with rubber foot pockets. They are longer and springier than plastic fins, so a swimmer wearing them is faster in open water and slower to tire than in plastic fins. They do nothing on land.\n\nNeeds the Spearfishing and Advanced fabrication research.</description>
+    <graphicData>
+      <!-- Approved art; see art/long-carbon-fins/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/LongCarbonFins</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>0.8</Mass>
+      <Flammability>0.4</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_SwimSpeed>0.6</Spearfishing_SwimSpeed>
+      <!-- Waves' stat: Rest drains in deep water at Waves' rate divided by this, 1.5 with the fins. -->
+      <Waves_SwimStamina>0.5</Waves_SwimStamina>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Feet</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Spearfishing_Fins</li>
+      </layers>
+      <!-- Item only, no worn graphic, as the other fins. No apparel tags: pawn generation must not hand fins to raiders or
+           traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>AdvancedFabrication</li>
+      </researchPrerequisites>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+      <displayPriority>255</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

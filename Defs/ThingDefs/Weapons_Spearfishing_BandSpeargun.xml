@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The industrial dive weapon (gear tiers ticket 01). A plain vanilla ranged weapon: Verb_Shoot, a projectile and no ammo
+       or reload comp, so Combat Extended and similar mods can patch it the usual way. Being ranged, its dives use and train
+       Shooting (SpearfishingUtility.DiveSkill). In a fight it reaches 4.9 cells (vanilla's x.9 convention for a 5-cell range)
+       and fires one shot, then a 3 second reload (the cooldown). Its shot stays under the pump shotgun's (18 damage, armor
+       penetration 0.14), the vanilla short-range gun of its era.
+       Parent is BaseMakeableGun, not BaseHumanMakeableGun, whose Gun tag would let pawn generation hand it to raiders; only
+       the Spearfishing_Spear tag, as on the spears. The recipe needs Spearfishing and Machining (ADR 0012): researchPrerequisite
+       replaces the parent's Gunsmithing, and researchPrerequisites adds the second project. -->
+  <ThingDef ParentName="BaseMakeableGun">
+    <defName>Spearfishing_BandSpeargun</defName>
+    <label>band speargun</label>
+    <description>A machined speargun: an aluminium stock, a steel shaft and a rubber band that drives it. A diver who aims and shoots lands fish more often than with a steel-tipped pole spear, and dives with it train Shooting instead of Melee. In a fight it fires one hard shot at very short range, then takes a slow reload. It needs no ammunition.\n\nNeeds the Spearfishing and Machining research.</description>
+    <graphicData>
+      <!-- Approved art; see art/band-speargun/APPROVAL.md. equippedAngleOffset stays at the default 0, as on the approved sheet. -->
+      <texPath>Things/Spearfishing/Weapon/BandSpeargun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <weaponTags Inherit="False">
+      <li>Spearfishing_Spear</li>
+    </weaponTags>
+    <costList>
+      <Steel>35</Steel>
+      <Chemfuel>10</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>2.2</Mass>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.65</AccuracyShort>
+      <AccuracyMedium>0.40</AccuracyMedium>
+      <AccuracyLong>0.20</AccuracyLong>
+      <RangedWeapon_Cooldown>3.0</RangedWeapon_Cooldown>
+      <Spearfishing_DivePower>1.0</Spearfishing_DivePower>
+    </statBases>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <researchPrerequisites>
+        <li>Machining</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+      <displayPriority>307</displayPriority>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Spearfishing_BandSpeargunShaft</defaultProjectile>
+        <warmupTime>0.8</warmupTime>
+        <range>4.9</range>
+        <soundCast>Bow_Small</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- The speargun's shaft in flight. It flies with vanilla's small arrow texture, referenced by path (the game's own art, not
+       a copy). RangedStab, as vanilla's thrown pilum. -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>Spearfishing_BandSpeargunShaft</defName>
+    <label>speargun shaft</label>
+    <graphicData>
+      <texPath>Things/Projectile/Arrow_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>RangedStab</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.12</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>35</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

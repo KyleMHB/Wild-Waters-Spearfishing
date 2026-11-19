@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The industrial dry snorkel (gear tiers ticket 04): the wooden snorkel's slots and look, better snorkeling, and a
+       quarter less rest at the surface between spear dives (the surface rest stat), so it also helps on work trips.
+
+       Slots as the wooden snorkel's (Apparel_Snorkel.xml): EyeCover layer on the Mouth group, so it is worn with the glass
+       mask and any helmet but never with the wooden snorkel. Unlocked by Spearfishing and Biofuel refining (ADR 0012), and
+       made at the machining table, which adds Machining as a third gate: the author chose it over a smithy on 2026-11-17. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_DrySnorkel</defName>
+    <label>dry snorkel</label>
+    <description>A moulded breathing tube with a soft silicone mouthpiece and a dry valve on top that shuts when a wave or a dive covers it, so the snorkeler never clears a mouthful of sea. Snorkeling is more enjoyable and lasts longer than with the plain snorkel, and a spear diver gets their breath back sooner between dives, resting a quarter less at the surface and so making more dives in a trip. It does nothing on land.\n\nNeeds the Spearfishing, Biofuel refining and Machining research.</description>
+    <graphicData>
+      <!-- Approved art; see art/dry-snorkel/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/DrySnorkel/DrySnorkel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costList>
+      <Chemfuel>20</Chemfuel>
+      <Steel>10</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToMake>3000</WorkToMake>
+      <Mass>0.25</Mass>
+      <Flammability>0.6</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_SnorkelingEnjoyment>0.5</Spearfishing_SnorkelingEnjoyment>
+      <!-- 1 hour (2,500 ticks) without, 1.8 hours (4,500 ticks) with; the wooden snorkel's 1.6 hours is 4,000. -->
+      <Spearfishing_SnorkelingSession>0.8</Spearfishing_SnorkelingSession>
+      <!-- A quarter less rest at the surface after each spear dive: 0.375 of the dive instead of 0.5. -->
+      <Spearfishing_SurfaceRest>-0.25</Spearfishing_SurfaceRest>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Mouth</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <!-- Worn on the head like the wooden snorkel: over the masks (63, 66 from behind) and the hair. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/DrySnorkel/DrySnorkel</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>64</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>67</layer>
+        </dataNorth>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <!-- No apparel tags: pawn generation must not hand snorkels to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>BiofuelRefining</li>
+        <li>Machining</li>
+      </researchPrerequisites>
+      <recipeUsers Inherit="False">
+        <li>TableMachining</li>
+      </recipeUsers>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <displayPriority>253</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

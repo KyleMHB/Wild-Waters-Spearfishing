@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    Reef and kelp patches in the coastal ocean of new maps, after the coast is laid (Terrain 210, MutatorPostTerrain 220) and before
+    roads and structures. Patches/MapGeneration.xml adds it to every surface map generator. Tuning: see GenStep_Reef.cs.
+  -->
+  <GenStepDef>
+    <defName>Spearfishing_Reef</defName>
+    <order>230</order>
+    <genStep Class="Spearfishing.GenStep_Reef">
+      <minShoreDistance>2</minShoreDistance>
+      <maxShoreDistance>40</maxShoreDistance>
+      <nearThreshold>0.15</nearThreshold>
+      <farThreshold>0.45</farThreshold>
+      <noiseFrequency>0.06</noiseFrequency>
+      <!-- Kelp (ticket 38): patch amount, and the map's average yearly temperature (C) where it turns olive and where it stops. -->
+      <kelpNearThreshold>0.15</kelpNearThreshold>
+      <kelpFarThreshold>0.45</kelpFarThreshold>
+      <!-- No kelp in the knee-deep shallows: none within this many water cells of land, thinning out over the next few. -->
+      <kelpMinShoreDistance>6</kelpMinShoreDistance>
+      <kelpFadeCells>3</kelpFadeCells>
+      <kelpFadeRaise>0.3</kelpFadeRaise>
+      <oliveKelpFrom>15</oliveKelpFrom>
+      <noKelpFrom>22</noKelpFrom>
+    </genStep>
+  </GenStepDef>
+
+</Defs>

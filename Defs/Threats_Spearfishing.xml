@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Threat events (threat events ticket 01, ADR 0015, ADR 0017). Small Misc storyteller events on the player's home map,
+       never in the first season (earliestDay 15) and never twice within half a year (minRefireDays 30). Cassandra, Phoebe and
+       Randy roll a home Misc incident about every 4.8 days, about 12.5 a year, and pick among those that can fire by weight;
+       on a Core-only colony the usable Misc weight is about 10 to 12, so a base chance of 1 is picked about once a year per
+       map. DLC Misc events dilute it toward once every year and a half. The worker also refuses while the same kind is
+       active on the map, or with its switch or fish stock management off. -->
+
+  <IncidentDef>
+    <defName>Spearfishing_Urchins</defName>
+    <label>urchin outbreak</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>Spearfishing.IncidentWorker_Urchins</workerClass>
+    <baseChance>1.0</baseChance>
+    <earliestDay>15</earliestDay>
+    <minRefireDays>30</minRefireDays>
+    <letterLabel>Urchins</letterLabel>
+    <letterText>Urchins are spreading through the reef and kelp of the {WATER}, grazing it down to bare rock. A bare patch no longer speeds the fish's regrowth, and it spreads until divers cull the urchins. Colonists on Spearfishing work will cull them on their own.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>Spearfishing_InvasivePredators</defName>
+    <label>invasive predators</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>Spearfishing.IncidentWorker_InvasivePredators</workerClass>
+    <baseChance>1.0</baseChance>
+    <earliestDay>15</earliestDay>
+    <minRefireDays>30</minRefireDays>
+    <letterLabel>Invasive {PREDATOR}</letterLabel>
+    <letterText>Invasive {PREDATOR} have turned up in the {WATER}. They eat young fish, so the {WATER} will regrow more slowly as their numbers grow. Spearfishing there culls them, since some of the divers' catches will be {PREDATOR}.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+  </IncidentDef>
+
+</Defs>

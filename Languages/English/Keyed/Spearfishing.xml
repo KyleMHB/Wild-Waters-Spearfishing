@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Spearfishing_ZoneLabel>spearfishing zone</Spearfishing_ZoneLabel>
+  <Spearfishing_DesignatorZoneDesc>Mark open water where divers may spearfish: the sea, deep lakes and deep rivers, wherever colonists swim. Not land, beaches, shallow or frozen water, marsh, toxic water or water under a rock roof.</Spearfishing_DesignatorZoneDesc>
+  <Spearfishing_StatsReport_Swimming>Swimming</Spearfishing_StatsReport_Swimming>
+  <Spearfishing_ZoneRefused_Land>A spearfishing zone needs open water, not land.</Spearfishing_ZoneRefused_Land>
+  <Spearfishing_ZoneRefused_Shallow>This water is too shallow to swim in. Spearfishing needs deep water.</Spearfishing_ZoneRefused_Shallow>
+  <Spearfishing_ZoneRefused_Frozen>This water is frozen over.</Spearfishing_ZoneRefused_Frozen>
+  <Spearfishing_ZoneRefused_Toxic>This water is toxic. Nobody dives in it.</Spearfishing_ZoneRefused_Toxic>
+  <Spearfishing_ZoneRefused_Marsh>Marsh is too shallow and muddy to swim in.</Spearfishing_ZoneRefused_Marsh>
+  <Spearfishing_ZoneRefused_Cave>This water is under a rock roof. Spearfishing needs open water.</Spearfishing_ZoneRefused_Cave>
+  <Spearfishing_ZoneRefused_NotSwimmable>Colonists don't swim in this water.</Spearfishing_ZoneRefused_NotSwimmable>
+  <Spearfishing_ZoneFishStock>Fish stock: {0} ({1} of {2} fish)</Spearfishing_ZoneFishStock>
+  <Spearfishing_ZoneFishRegrowth>Regrowing {0} fish a day</Spearfishing_ZoneFishRegrowth>
+  <Spearfishing_ZoneFishRegrowthTip>Fish regrow fastest when the water is about half full, and slowly when it is nearly empty or nearly full.</Spearfishing_ZoneFishRegrowthTip>
+  <Spearfishing_ZoneFishRegrowthReefTip>Base regrowth {0} a day. Reef and kelp cover {1} of this water, adding {1}.</Spearfishing_ZoneFishRegrowthReefTip>
+  <Spearfishing_ZoneNotWorthADive>Too few fish left to be worth a dive.</Spearfishing_ZoneNotWorthADive>
+  <Spearfishing_ZoneFishDownLimit>Fish-down limit: {0}</Spearfishing_ZoneFishDownLimit>
+  <Spearfishing_ZoneBelowFishDownLimit>Below this zone's fish-down limit. Divers wait until the fish come back.</Spearfishing_ZoneBelowFishDownLimit>
+  <Spearfishing_LowerFishDownLimit>Lower fish-down limit</Spearfishing_LowerFishDownLimit>
+  <Spearfishing_LowerFishDownLimitDesc>Let divers fish this zone's water further down before they stop. Now {0}.\n\nUseful in a famine, but water fished low regrows slowly.</Spearfishing_LowerFishDownLimitDesc>
+  <Spearfishing_RaiseFishDownLimit>Raise fish-down limit</Spearfishing_RaiseFishDownLimit>
+  <Spearfishing_RaiseFishDownLimitDesc>Stop divers sooner to leave more fish in this zone's water. Now {0}.\n\nFish regrow fastest when the water is about half full.</Spearfishing_RaiseFishDownLimitDesc>
+  <Spearfishing_ZoneTooFarToDive>Spearfishing zone too far from shore to dive safely</Spearfishing_ZoneTooFarToDive>
+  <Spearfishing_DesignatorRestoreSeaFloor>restore sea floor</Spearfishing_DesignatorRestoreSeaFloor>
+  <Spearfishing_DesignatorRestoreSeaFloorDesc>Mark bare sea floor for divers to restore. A colonist on Spearfishing work moves cuttings onto a marked cell from reef or kelp beside it, using Plants, and the cell becomes the same kind of floor. Marked cells further out wait until restoration reaches them. Restored floor spreads on its own to one marked cell beside it about every 15 days. The more reef and kelp a water has, the faster its fish regrow.</Spearfishing_DesignatorRestoreSeaFloorDesc>
+  <Spearfishing_RestoreRefused_NotSea>Only sea floor can be restored, not land, lakes or rivers.</Spearfishing_RestoreRefused_NotSea>
+  <Spearfishing_RestoreRefused_NotBare>This sea floor is already reef or kelp.</Spearfishing_RestoreRefused_NotBare>
+  <Spearfishing_RestoreRefused_Recovering>This floor is already growing back after the urchins were culled.</Spearfishing_RestoreRefused_Recovering>
+  <Spearfishing_SettingDiveVisuals>Dive visuals</Spearfishing_SettingDiveVisuals>
+  <Spearfishing_SettingDiveVisualsDesc>Divers disappear under the water while they dive, fish shadows circle them, and a speared fish shows a small burst. Floating swimmers are drawn face down, and dives make their own sounds. Turn this off to keep divers and snorkelers in view, draw floating pawns as Waves draws them, and play no dive sounds. Catches and sharks are the same either way.</Spearfishing_SettingDiveVisualsDesc>
+  <Spearfishing_SettingFishStockManagement>Fish stock management</Spearfishing_SettingFishStockManagement>
+  <Spearfishing_SettingFishStockManagementDesc>Fish regrow fastest when the water is about half full and slowly when it is nearly empty, and each spearfishing zone shows how many fish its water regrows a day. Each zone has a fish-down limit, half by default, and its divers stop when the water falls below it. Turn this off for the simple version: the water regrows the same number of fish each day until full, and divers stop when it falls below a quarter. Turning it off also removes the artificial reef, the hatchery and sea floor restoration, and cancels any that are unfinished, refunding their materials. Built reefs and hatcheries stop until you turn it back on, and floor that has already become reef stays. Turning it off also stops urchin and invasive predator events and ends any under way. Switching keeps every body of water's fish.</Spearfishing_SettingFishStockManagementDesc>
+  <Spearfishing_SettingUrchinEvents>Urchin events</Spearfishing_SettingUrchinEvents>
+  <Spearfishing_SettingUrchinEventsDesc>Now and then urchins graze a patch of reef and kelp in the sea down to bare rock. The bare patch speeds regrowth no more and spreads until divers cull it. Turning this off ends any urchin outbreak at once. Needs fish stock management.</Spearfishing_SettingUrchinEventsDesc>
+  <Spearfishing_SettingInvasivePredatorEvents>Invasive predator events</Spearfishing_SettingInvasivePredatorEvents>
+  <Spearfishing_SettingInvasivePredatorEventsDesc>Now and then invasive predators, lionfish at sea or snakeheads in lakes and rivers, arrive in a body of water and slow its regrowth as their numbers grow. Spearfishing there culls them. Turning this off ends any invasion at once. Needs fish stock management.</Spearfishing_SettingInvasivePredatorEventsDesc>
+  <Spearfishing_PredatorLionfish>lionfish</Spearfishing_PredatorLionfish>
+  <Spearfishing_PredatorSnakehead>snakeheads</Spearfishing_PredatorSnakehead>
+  <Spearfishing_ZonePredators>Invasive {0}: {1}, cutting regrowth by {2}</Spearfishing_ZonePredators>
+  <Spearfishing_ZonePredatorsTip>Invasive {0} eat young fish and cut this water's regrowth by {1}. Spearfishing here culls them.</Spearfishing_ZonePredatorsTip>
+  <Spearfishing_PredatorsCulledLabel>Invasive {PREDATOR} culled</Spearfishing_PredatorsCulledLabel>
+  <Spearfishing_PredatorsCulled>Your divers have culled the last of the invasive {PREDATOR} in the {WATER}. Its fish regrow at their full pace again.</Spearfishing_PredatorsCulled>
+  <Spearfishing_UrchinsCulledLabel>Urchins culled</Spearfishing_UrchinsCulledLabel>
+  <Spearfishing_UrchinsCulled>Your divers have culled the last of the urchins in the sea. The culled reef and kelp will grow back over the next few days.</Spearfishing_UrchinsCulled>
+  <Spearfishing_SettingSharkChance>Shark chance per trip: {0}</Spearfishing_SettingSharkChance>
+  <Spearfishing_SettingSharkChanceDesc>The chance that a shark finds a spearfishing diver in deep ocean, rolled once per trip. It bites once, injuring the diver and taking their catch, and the diver heads home; a diver holding a speargun may drive it off first, with better Shooting giving better odds. Never in shallow ocean, lakes or rivers, and never while snorkeling. Set to 0 for no sharks.</Spearfishing_SettingSharkChanceDesc>
+  <Spearfishing_SharkBite>A shark bit {PAWN_labelShort} in deep water and took {PAWN_possessive} catch. {PAWN_labelShort} is heading home.</Spearfishing_SharkBite>
+  <Spearfishing_SharkDrivenOff>{PAWN_labelShort} drove off a shark with {PAWN_possessive} speargun and kept the catch.</Spearfishing_SharkDrivenOff>
+  <Spearfishing_HatcheryChooseWater>Choose water</Spearfishing_HatcheryChooseWater>
+  <Spearfishing_HatcheryChooseWaterDesc>Choose the sea, lake or river this hatchery's fry are released into. Haulers carry each full pail to its nearest edge.</Spearfishing_HatcheryChooseWaterDesc>
+  <Spearfishing_HatcheryIdle>Idle: fish stock management is off.</Spearfishing_HatcheryIdle>
+  <Spearfishing_HatcheryProgress>Fry: {0} of a batch of {1}</Spearfishing_HatcheryProgress>
+  <Spearfishing_HatcheryPailWaiting>A pail of {0} fry is waiting for a hauler. The next batch starts once it is released.</Spearfishing_HatcheryPailWaiting>
+  <Spearfishing_HatcheryTarget>Releases into: the {0}</Spearfishing_HatcheryTarget>
+  <Spearfishing_HatcheryNoWater>No fishing water on this map to release fry into.</Spearfishing_HatcheryNoWater>
+  <Spearfishing_FryPailInspect>{0} fry for the {1}</Spearfishing_FryPailInspect>
+  <Spearfishing_FryPailNoWater>{0} fry, with no fishing water to go to</Spearfishing_FryPailNoWater>
+  <Spearfishing_FryReleased>Released {0} fish into the {1}.</Spearfishing_FryReleased>
+  <Spearfishing_FryReleasedCapped>Released {0} fish into the {1}. It is full, so {2} more were lost.</Spearfishing_FryReleasedCapped>
+  <Spearfishing_WaterSea>sea</Spearfishing_WaterSea>
+  <Spearfishing_WaterLake>lake</Spearfishing_WaterLake>
+  <Spearfishing_WaterRiver>river</Spearfishing_WaterRiver>
+  <Spearfishing_NeedsFishStockManagement>Needs fish stock management, which is off in the mod settings.</Spearfishing_NeedsFishStockManagement>
+  <Spearfishing_FloatingHome>{PAWN_labelShort} is exhausted, but {PAWN_possessive} buoy keeps {PAWN_objective} afloat for a slow swim home.</Spearfishing_FloatingHome>
+  <Spearfishing_ArtificialReefRefused_NotSea>Artificial reefs go only on sea floor, not on land, lakes or rivers.</Spearfishing_ArtificialReefRefused_NotSea>
+  <Spearfishing_ArtificialReefRefused_NotBare>This sea floor is already reef or kelp.</Spearfishing_ArtificialReefRefused_NotBare>
+  <Spearfishing_ArtificialReefGrowing>Becoming reef: {0} ({1} days left)</Spearfishing_ArtificialReefGrowing>
+  <Spearfishing_ArtificialReefPaused>Becoming reef: paused while fish stock management is off</Spearfishing_ArtificialReefPaused>
+</LanguageData>

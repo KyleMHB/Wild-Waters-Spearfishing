@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Its own work type, present with or without Odyssey (ADR 0003), so priorities in a save don't change with the DLC.
+       Violent, like hunting: a diver must wield a spear. -->
+  <WorkTypeDef>
+    <defName>Spearfishing</defName>
+    <labelShort>spearfish</labelShort>
+    <pawnLabel>Spearfisher</pawnLabel>
+    <gerundLabel>spearfishing</gerundLabel>
+    <description>Swim out to spearfishing zones with a spear, dive for fish and bring the catch ashore. With fish stock management on, also restore marked sea floor and cull urchins.</description>
+    <verb>Spearfish</verb>
+    <naturalPriority>940</naturalPriority>
+    <disabledForSlaves>true</disabledForSlaves>
+    <relevantSkills>
+      <li>Melee</li>
+      <li>Shooting</li>
+    </relevantSkills>
+    <workTags>
+      <li>Violent</li>
+      <li>AllWork</li>
+    </workTags>
+  </WorkTypeDef>
+
+  <WorkGiverDef>
+    <defName>Spearfishing_Spearfish</defName>
+    <label>spearfish</label>
+    <giverClass>Spearfishing.WorkGiver_Spearfish</giverClass>
+    <workType>Spearfishing</workType>
+    <verb>spearfish</verb>
+    <gerund>spearfishing</gerund>
+    <tagToGive>Fieldwork</tagToGive>
+    <priorityInType>50</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+      <li>Moving</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>Spearfishing_Spearfish</defName>
+    <driverClass>Spearfishing.JobDriver_Spearfish</driverClass>
+    <reportString>spearfishing.</reportString>
+    <suspendable>false</suspendable>
+    <casualInterruptible>false</casualInterruptible>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+  </JobDef>
+
+</Defs>

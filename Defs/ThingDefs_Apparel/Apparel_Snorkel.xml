@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- A medieval snorkel (ticket 17). Makes snorkeling more enjoyable and lets a snorkeler stay out longer.
+
+       Layer: EyeCover, the glass mask's layer, on the Mouth group. Apparel conflicts only when it shares a layer and the body
+       parts of its groups overlap: Mouth (the jaw) and the mask's Eyes don't, so the two are worn together; helmets and hats
+       are on Overhead, so they never conflict. A layer of its own was tried on paper and dropped: RimWorld (1.7,
+       ApparelGraphicRecordGetter.TryGetGraphicApparel and DynamicPawnRenderNodeSetup_Apparel.ProcessApparel) draws worn
+       apparel on the head, with head textures, only when its last layer is Overhead or EyeCover; any other layer would need
+       a texture per body type, drawn on the body. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_Snorkel</defName>
+    <label>snorkel</label>
+    <description>A bent wooden breathing tube with a leather mouthpiece, worn on the side of the head. A snorkeler can keep their face in the water and watch the sea floor for as long as they like, so snorkeling is more enjoyable and lasts longer. It does nothing on land.</description>
+    <graphicData>
+      <!-- Approved art; see art/snorkel/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/Snorkel/Snorkel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <costList>
+      <WoodLog>15</WoodLog>
+      <Cloth>5</Cloth>
+    </costList>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToMake>1500</WorkToMake>
+      <Mass>0.3</Mass>
+      <Flammability>1</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_SnorkelingEnjoyment>0.35</Spearfishing_SnorkelingEnjoyment>
+      <!-- 1 hour (2,500 ticks) without, 1.6 hours (4,000 ticks) with. -->
+      <Spearfishing_SnorkelingSession>0.6</Spearfishing_SnorkelingSession>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Mouth</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <!-- Worn on the head: _south, _east and _north head textures, drawn over the masks (layer 63, 66 from behind) and
+           so over the hair (62) too. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/Snorkel/Snorkel</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>64</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>67</layer>
+        </dataNorth>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <!-- No apparel tags: pawn generation must not hand snorkels to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <recipeUsers Inherit="False">
+        <li>CraftingSpot</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <displayPriority>252</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

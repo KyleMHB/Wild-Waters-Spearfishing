@@ -1,0 +1,12 @@
+# Require Waves 1.3.0 and use its public API and stats
+
+Waves 1.3.0 added the public hook that ADR 0001 asked for: a `RimWorldWaves.WavesApi` class, the stats `Waves_SwimStamina` and `Waves_WaterInsulation`, the hooks `AddKeepsAfloat` and `AddStaysInWater`, and read-only access to what we used to reach by reflection. Spearfishing now requires Waves 1.3.0 or later and drops its patches on Waves internals instead of keeping them as a fallback. Spearfishing was unpublished when this was decided, so no player runs an older Waves with it, and Workshop updates Waves for subscribers. The fins and the wetsuit raise Waves' own stats through `equippedStatOffsets`, and Spearfishing's `Spearfishing_SwimEndurance` and `Spearfishing_WaterColdLimitOffset` stats are removed. Gear from any mod that raises those stats then helps Spearfishing's divers, and Spearfishing's gear helps any Waves swimmer.
+
+## Consequences
+
+The Waves bridge stays the single place that touches Waves, and each API call still belongs to a bridge feature that logs once and turns itself off if the call is missing. The bridge still calls `WavesApi` by reflection, resolving each member once into a delegate, instead of referencing `RimWorldWaves.dll` at compile time. A compile-time reference would throw `MissingMethodException` mid-job when a member is missing, and every build, including the 1.6 compile check and ticket worktrees, would need Waves' files on disk. Living Waters 1.4.0's `LivingWatersApi.UnderwaterQueue` replaces the reflected render layer for lakes and rivers; Living Waters stays optional. Two internals have no API equivalent and stay on reflection: the queue just above Waves' shore veil (ticket 34) and the check that Waves draws `Pawn.Swimming`. The stay-out-in-the-water hook is registered from the bridge, not through the `WavesWaterJob` extension on job defs, so no Waves type is named outside `Source/Waves/` and a missing hook fails as one bridge feature instead of a def load error. The move replaces only what Spearfishing already used; the new sea-life, water-kind and flow data is not used for gameplay (ADR 0002 still holds).
+
+## Considered Options
+
+- Use the API when present and fall back to the internal patches on Waves 1.2.x: two code paths and two sets of failure tests for players who do not exist.
+- Keep Spearfishing's own stats and feed them into Waves' stats: our gear would not combine with other mods' swim gear, and it adds a stat part for no gameplay gain.

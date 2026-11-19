@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The buoy is apparel (spec "Stringer and buoy"): a float on a line tied at the waist, so it is worn rather than carried.
+       Wearing it raises stringer capacity, shown in the stat panel, and its marker extension tells the Waves bridge to keep an
+       exhausted wearer afloat (spec "Waves bridge module", stay-afloat). -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_WoodenBuoy</defName>
+    <label>wooden buoy</label>
+    <description>A hollowed wooden float on a short line tied at the waist. A diver tows it behind them, keeps their catch on it, and so brings more fish home per trip. If a diver wearing one becomes exhausted in deep water, they hold on to it and float instead of going under, then swim slowly home, worn out, with whatever they caught.</description>
+    <graphicData>
+      <!-- Approved art; see art/wooden-buoy/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/WoodenBuoy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Neolithic</techLevel>
+    <costList>
+      <WoodLog>30</WoodLog>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>1200</WorkToMake>
+      <Mass>2</Mass>
+      <Flammability>1</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_StringerCapacity>4</Spearfishing_StringerCapacity>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Spearfishing_Buoy</li>
+      </layers>
+      <!-- No apparel tags: pawn generation must not hand buoys to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+    </apparel>
+    <modExtensions>
+      <li Class="Spearfishing.BuoyExtension" />
+    </modExtensions>
+    <recipeMaker>
+      <!-- No research: a neolithic colony makes it at a crafting spot. -->
+      <recipeUsers Inherit="False">
+        <li>CraftingSpot</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <displayPriority>251</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <!-- The industrial buoy (gear tiers ticket 06): the wooden buoy's slot, marker and behaviour, with a bigger stringer and less
+       mass. Needs Spearfishing and Biofuel refining (ADR 0012); chemfuel stands in for the foam. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_FoamBuoy</defName>
+    <label>foam buoy</label>
+    <description>A moulded foam float with a webbing strap and a steel tow ring, on a short line tied at the waist. It holds more fish than a wooden buoy and is lighter to carry. Like any buoy, it keeps an exhausted diver afloat in deep water for a slow swim home with their catch.\n\nNeeds the Spearfishing and Biofuel refining research.</description>
+    <graphicData>
+      <!-- Approved art; see art/foam-buoy/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/FoamBuoy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costList>
+      <Chemfuel>20</Chemfuel>
+      <Cloth>10</Cloth>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>2400</WorkToMake>
+      <Mass>1</Mass>
+      <Flammability>1</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_StringerCapacity>6</Spearfishing_StringerCapacity>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Spearfishing_Buoy</li>
+      </layers>
+      <!-- No apparel tags: pawn generation must not hand buoys to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+    </apparel>
+    <modExtensions>
+      <li Class="Spearfishing.BuoyExtension" />
+    </modExtensions>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>BiofuelRefining</li>
+      </researchPrerequisites>
+      <recipeUsers Inherit="False">
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <displayPriority>252</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <!-- An exhausted buoy wearer's slow swim home. Drafting ends it (playerInterruptible stays at its default); the wearer's
+       own needs cannot (see Buoy.cs). -->
+  <JobDef>
+    <defName>Spearfishing_FloatHome</defName>
+    <driverClass>Spearfishing.JobDriver_FloatHome</driverClass>
+    <reportString>floating home, exhausted.</reportString>
+    <suspendable>false</suspendable>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

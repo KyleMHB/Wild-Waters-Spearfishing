@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Every surface map generator (player and faction bases, encounters) inherits its steps from MapCommonBase. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/MapGeneratorDef[@Name="MapCommonBase"]/genSteps</xpath>
+    <value>
+      <li>Spearfishing_Reef</li>
+    </value>
+  </Operation>
+</Patch>

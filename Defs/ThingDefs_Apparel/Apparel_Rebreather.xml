@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The spacer rebreather (gear tiers ticket 09): a better dry snorkel. A small unit held in the mouth with no tube, which
+       replaced the planned full-face mask on 2026-11-17 (the author's choice). It lowers the rest at the surface between spear
+       dives by 40% (the dry snorkel 25%) and improves snorkeling over the dry snorkel. No dive success: masks keep that.
+
+       Slots as the dry snorkel's (Apparel_DrySnorkel.xml): EyeCover layer on the Mouth group, so it is worn with any mask and
+       helmet but never with the wooden or dry snorkel. Needs Spearfishing and Advanced fabrication (ADR 0012) and is made at the
+       fabrication bench from plasteel and an advanced component, as the other spacer gear is. The cost, work, mass and hit
+       points are this ticket's picks, below the long carbon fins' for a smaller item, open to the balance pass. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_Rebreather</defName>
+    <label>rebreather</label>
+    <description>A small plasteel breathing unit held across the mouth, with no tube to the surface. Between spear dives the wearer gets their breath back faster than with the dry snorkel, resting 40% less at the surface instead of a quarter less, and so makes more dives in a trip. Snorkeling is also more enjoyable and lasts longer than with the dry snorkel. It is worn with a mask but not with a snorkel, and does nothing on land.\n\nNeeds the Spearfishing and Advanced fabrication research.</description>
+    <graphicData>
+      <!-- Approved art; see art/rebreather/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/Rebreather/Rebreather</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <costList>
+      <Plasteel>15</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToMake>6000</WorkToMake>
+      <Mass>0.3</Mass>
+      <Flammability>0.4</Flammability>
+      <EquipDelay>1</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <!-- Enjoyment 1.6 against the dry snorkel's 1.5. -->
+      <Spearfishing_SnorkelingEnjoyment>0.6</Spearfishing_SnorkelingEnjoyment>
+      <!-- 1 hour (2,500 ticks) without, 2 hours (5,000 ticks) with; the dry snorkel's 1.8 hours is 4,500. -->
+      <Spearfishing_SnorkelingSession>1.0</Spearfishing_SnorkelingSession>
+      <!-- 40% less rest at the surface after each spear dive: 0.3 of the dive instead of 0.5 (the dry snorkel 0.375). -->
+      <Spearfishing_SurfaceRest>-0.40</Spearfishing_SurfaceRest>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Mouth</li>
+      </bodyPartGroups>
+      <layers>
+        <li>EyeCover</li>
+      </layers>
+      <!-- Drawn as the snorkels are: at 64, over the mask (63), and at 67 from behind, where its north texture is empty because the head
+           hides the unit (the author asked for no strap). -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/Rebreather/Rebreather</wornGraphicPath>
+      <drawData>
+        <defaultData>
+          <layer>64</layer>
+        </defaultData>
+        <dataNorth>
+          <layer>67</layer>
+        </dataNorth>
+      </drawData>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+      <!-- No apparel tags: pawn generation must not hand rebreathers to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>AdvancedFabrication</li>
+      </researchPrerequisites>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <displayPriority>254</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Wild Waters: Spearfishing</name>
+  <author>KyleMHB</author>
+  <packageId>kylemhb.wildwaters.spearfishing</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+    <li>1.7</li>
+  </supportedVersions>
+  <modVersion>0.1.0</modVersion>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+    <li>
+      <packageId>patrickschwarzer.waves</packageId>
+      <displayName>RimWorld: Waves</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3831078430</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>patrickschwarzer.waves</li>
+    <li>patrickschwarzer.rivers</li>
+  </loadAfter>
+  <description>Colonists can catch fish in the sea, deep lakes and deep rivers. Paint a spearfishing zone on open water, and divers swim out with a spear, make breath-hold dives and bring the catch ashore as raw fish for your stockpiles. In their recreation time, colonists go snorkeling near shore.
+
+Each body of water has one fish stock: the sea, each deep lake and each deep river. Every zone on it shares that stock, so painting more zones adds no fish. Water holds one fish per cell, up to 2400, so a small lake holds fewer fish than the sea. An ordinary sea regrows at most about 60 fish a day. Fish gather over reef and kelp, so dives there succeed half again as often, but reef and kelp add no fish. New coastal maps get reef patches under the sea, and cooler coasts get kelp forests too. Landfill and bridges reshape the water without refilling it. Harder difficulties lower the catch chance.
+
+Fish stock management is a mod setting, on by default. Fish regrow fastest when the water is about half full and slowly when it is nearly empty, and the zone shows how many fish its water regrows a day. Each zone has a fish-down limit, half by default and adjustable from 10% to 90%, and its divers stop when the water falls below it. Reef and kelp also speed up their water's regrowth, up to twice as fast for water that is all reef. With the setting off, the water regrows the same number of fish each day and divers stop at a quarter.
+
+Fish stock management also brings ways to help fished-out water recover. An artificial reef is a steel frame sunk on bare sea floor that becomes reef after 15 days. With the Restore sea floor order, divers move cuttings from reef or kelp onto marked bare floor, which then spreads slowly within the marks. A powered hatchery raises fry from animal feed, and haulers release them into the sea, lake or river you choose. None of these raises how many fish the water can hold. Turning fish stock management off removes all three. The buildings leave the Architect menu, unfinished ones are cancelled with a refund, and built ones stop working. Reef that has already formed stays.
+
+With fish stock management on, two storyteller events now and then threaten the water, each with its own switch. Urchins graze a patch of reef and kelp in the sea bare. The barren stops speeding regrowth, grows by one cell every 3 days, and divers on Spearfishing work cull it using Melee. A culled cell regrows 5 days later. Invasive predators, lionfish at sea and snakeheads in lakes and rivers, cut one body of water's regrowth by up to half as their numbers grow, and spearfishing there culls them. Threats never take fish or lower how many the water can hold. Turning management or a threat's switch off ends it at once.
+
+Gear comes in four tiers. A pole spear, wooden fins and a wooden buoy need no research. The Spearfishing research unlocks a steel-tipped pole spear, a glass mask, a snorkel and a basic wetsuit. Machining, Biofuel refining, Advanced fabrication and Recon armor then unlock industrial and spacer gear: band and pneumatic spearguns, plastic and long carbon fins, a low-volume mask, a dry snorkel, a rebreather, neoprene and thermal wetsuits, and a foam buoy. Fins make divers swim faster and tire slower, masks and better spears land more fish, wetsuits let them work colder water, buoys carry more fish and keep an exhausted diver afloat, and the dry snorkel and rebreather shorten the rest between dives. Spear dives train Melee, and speargun dives train Shooting.
+
+A rare shark can bite a diver in deep ocean and take the catch, at most once per trip. A diver with a speargun may drive it off. The shark chance is a mod setting, 1% per trip by default, and 0 turns sharks off.
+
+Snorkeling needs no gear, zone or research, and pacifists can do it. Snorkelers float face down, freedive now and then and catch nothing. A snorkel gives more recreation per hour and longer sessions. Work dives give a little recreation too.
+
+You can add the mod to an existing save or remove it from one. After removal the sea, stockpiles and other zones stay intact, and the mod's zones, reef, buildings and items are gone. The first load shows one-time errors about missing defs.
+
+Requires Harmony and RimWorld: Waves 1.3.0 or later, which provides the swimming. Odyssey, Living Waters and Dubs Bad Hygiene are optional. With Odyssey, catches are Odyssey's fish, and spearfishing and line fishing share them both ways. A catch by either lowers both by the same share, so line fishing the water empty stops divers too. Urchins and predators slow Odyssey's regrowth too, but only spearfishing culls predators. With Dubs Bad Hygiene, time in the water counts as a wash.</description>
+</ModMetaData>

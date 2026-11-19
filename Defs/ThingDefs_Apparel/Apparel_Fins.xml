@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_WoodenFins</defName>
+    <label>wooden fins</label>
+    <description>A pair of thin wooden blades carved to strap onto the feet. A swimmer wearing them is a little faster in open water and a little slower to tire. They do nothing on land.</description>
+    <graphicData>
+      <!-- Approved art; see art/wooden-fins/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Apparel/WoodenFins</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Neolithic</techLevel>
+    <costList>
+      <WoodLog>30</WoodLog>
+    </costList>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <WorkToMake>1500</WorkToMake>
+      <Mass>1.2</Mass>
+      <Flammability>1</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Spearfishing_SwimSpeed>0.25</Spearfishing_SwimSpeed>
+      <!-- Waves' stat: Rest drains in deep water at Waves' rate divided by this, 1.25 with the fins. -->
+      <Waves_SwimStamina>0.25</Waves_SwimStamina>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Feet</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Spearfishing_Fins</li>
+      </layers>
+      <!-- No apparel tags: pawn generation must not hand fins to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+    </apparel>
+    <recipeMaker>
+      <!-- No research: a neolithic colony makes them at a crafting spot. -->
+      <recipeUsers Inherit="False">
+        <li>CraftingSpot</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <displayPriority>250</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

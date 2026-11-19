@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- On a pawn (gear tiers ticket 04): how long a diver rests face down at the surface after each spearfishing dive, as a
+       share of the usual rest (half the dive before it, DiveRules.SurfaceShareOfDive). Neutral at 100%; the dry snorkel
+       lowers it through an ordinary equippedStatOffset, so other mods can add their own. Catch rolls stay one per fixed
+       stretch of time under the water, so a shorter rest means more dives an hour, not a better chance per roll. The floor
+       keeps some rest whatever stacks. Snorkeling's float between freedives does not read it. -->
+  <StatDef>
+    <defName>Spearfishing_SurfaceRest</defName>
+    <label>surface rest</label>
+    <description>How long this person rests at the surface between spearfishing dives, compared with the usual rest of half the dive before it. A shorter rest means more dives in the same time.</description>
+    <category>BasicsPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.25</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>2485</displayPriorityInCategory>
+  </StatDef>
+</Defs>

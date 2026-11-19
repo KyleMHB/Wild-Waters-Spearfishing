@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Spearfishing removal probe (developer only)</name>
+  <author>KyleMHB</author>
+  <packageId>kylemhb.wildwaters.spearfishing.removalprobe</packageId>
+  <supportedVersions>
+    <li>1.7</li>
+  </supportedVersions>
+  <description>Developer-only. Loads a save named on the command line with Spearfishing removed, reports what the map kept, then quits. Installed and removed by tools/removal-check/removal_check.py.</description>
+</ModMetaData>

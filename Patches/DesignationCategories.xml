@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Put the zone tool in the Zone menu, right after the growing zone. -->
+  <Operation Class="PatchOperationInsert">
+    <xpath>Defs/DesignationCategoryDef[defName="Zone"]/specialDesignatorClasses/li[text()="Designator_ZoneAdd_Growing"]</xpath>
+    <order>Append</order>
+    <value>
+      <li>Spearfishing.Designator_ZoneAdd_Spearfishing</li>
+    </value>
+  </Operation>
+  <!-- Habitat restoration's mark in the Orders menu, after smoothing (fish recovery ticket 03). -->
+  <Operation Class="PatchOperationInsert">
+    <xpath>Defs/DesignationCategoryDef[defName="Orders"]/specialDesignatorClasses/li[text()="Designator_SmoothSurface"]</xpath>
+    <order>Append</order>
+    <value>
+      <li>Spearfishing.Designator_RestoreSeaFloor</li>
+    </value>
+  </Operation>
+</Patch>

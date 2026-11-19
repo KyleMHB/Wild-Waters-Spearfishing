@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Medieval gear for divers: the steel-tipped pole spear, the glass mask, the basic wetsuit and the snorkel. After Smithing, because the spear's
+       point and the mask's frame are worked metal. Placed one column right of Smithing at (1, 3.5), clear of the Smithing to
+       Machining line along y 3.5 and of Core, Royalty and Odyssey nodes; Odyssey's Fishing sits at (1, 2.8). -->
+  <ResearchProjectDef>
+    <defName>Spearfishing_Spearfishing</defName>
+    <label>spearfishing</label>
+    <description>Work metal into better gear for divers: a pole spear with a forged steel point, a glass mask that lets a diver see fish clearly, and a leather wetsuit for colder water. A snorkel makes time in the sea more relaxing. It is also the first step toward better diving gear, and with fish stock management on it opens sea floor restoration, the artificial reef and the hatchery.</description>
+    <baseCost>500</baseCost>
+    <techLevel>Medieval</techLevel>
+    <prerequisites>
+      <li>Smithing</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>2.80</researchViewY>
+  </ResearchProjectDef>
+</Defs>

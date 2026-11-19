@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The spacer wetsuit (gear-tiers ticket 10). The other wetsuits' layer and body parts, so no two can be worn together, and it
+       still goes under any jacket, parka or armour. A fixed material: a synthread suit with plasteel seals and an advanced
+       component for the heated core, so it has no stuff and its textures carry their own colour. Made at the fabrication bench,
+       where advanced components are made and recon armour is built. Waves' water insulation 35 lowers Waves' water cold limit by
+       35 degrees, 15 past the neoprene suit's 20 (the step from decisions.md). Needs Spearfishing and Recon armor, vanilla's
+       first environment-sealed suit (ADR 0012). -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_ThermalWetsuit</defName>
+    <label>thermal wetsuit</label>
+    <description>A sealed suit of insulating synthread with plasteel-ringed seals and a heated core panel round the chest and belly, covering the body, arms and legs. Ordinary clothing keeps nobody warm in the sea. Where a neoprene wetsuit only holds in the diver's own heat, this one adds its own, so a diver in one can work water fifteen degrees colder than in neoprene before hypothermia sets in. Only the coldest seas stay dangerous. It can be worn under a jacket or parka, but not with another wetsuit.\n\nNeeds the Spearfishing and Recon armor research.</description>
+    <graphicData>
+      <!-- Approved art; see art/thermal-wetsuit/APPROVAL.md. Coloured in the texture: no stuff, no tint. -->
+      <texPath>Things/Spearfishing/Apparel/ThermalWetsuit/ThermalWetsuit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Spacer</techLevel>
+    <costList>
+      <Synthread>50</Synthread>
+      <Plasteel>20</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToMake>20000</WorkToMake>
+      <Mass>1.5</Mass>
+      <Flammability>0.4</Flammability>
+      <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>0</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Waves_WaterInsulation>35</Waves_WaterInsulation>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <!-- One worn texture per adult body type: ThermalWetsuit_<BodyType>_<dir>. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/ThermalWetsuit/ThermalWetsuit</wornGraphicPath>
+      <!-- No apparel tags: pawn generation must not hand wetsuits to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisites>
+        <li>Spearfishing_Spearfishing</li>
+        <li>ReconArmor</li>
+      </researchPrerequisites>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <displayPriority>254</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

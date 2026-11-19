@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Developer-only probe for the save-removal check; built into work/removal-check/probe, never shipped. RimWorld 1.7 only. -->
+  <PropertyGroup>
+    <AssemblyName>SpearfishingRemovalProbe</AssemblyName>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <NoStdLib>true</NoStdLib>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <OutputPath>..\..\work\removal-check\probe\1.7\Assemblies\</OutputPath>
+    <RimWorldPath Condition="'$(RimWorldPath)' == ''">E:\Steam\steamapps\common\RimWorld</RimWorldPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(RimWorldPath)\System.*.dll;$(RimWorldPath)\mscorlib.dll;$(RimWorldPath)\netstandard.dll;$(RimWorldPath)\Assembly-CSharp.dll;$(RimWorldPath)\UnityStubs.dll;$(RimWorldPath)\Waylith.UnityCompat.dll;$(RimWorldPath)\Waylith.dll;$(RimWorldPath)\Brutal.Core.Numerics.dll;$(RimWorldPath)\Brutal.Core.Common.dll" Exclude="$(RimWorldPath)\System.IO.Compression.Native.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

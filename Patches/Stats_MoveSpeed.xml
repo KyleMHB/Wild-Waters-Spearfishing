@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Swim speed acts through ordinary Move Speed while a pawn is in swimmable water (ADR 0005, ADR 0010), not through Waves' path cost. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StatDef[defName="MoveSpeed"]/parts</xpath>
+    <value>
+      <li Class="Spearfishing.StatPart_SwimSpeed" />
+    </value>
+  </Operation>
+</Patch>

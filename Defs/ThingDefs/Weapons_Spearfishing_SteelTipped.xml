@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The medieval upgrade of the pole spear: the same wooden pole with a forged steel point. Spears fish better (dive power
+       0.85 against the pole spear's 0.6) and fights a little better, still below the vanilla spear. Made at a smithy
+       (BaseMeleeWeapon's recipe users) after Spearfishing research. Only the Spearfishing_Spear tag, so pawn generation never
+       hands it to raiders. -->
+  <ThingDef ParentName="BaseMeleeWeapon">
+    <defName>Spearfishing_SteelPoleSpear</defName>
+    <label>steel-tipped pole spear</label>
+    <description>A long wooden pole spear with a forged steel point. The hard, sharp point goes through scales a fire-hardened wooden one glances off, so divers who carry one land fish more often than with a plain pole spear. It makes a fair weapon too.</description>
+    <graphicData>
+      <!-- Approved art; see art/steel-pole-spear/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Weapon/SteelPoleSpear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <weaponClasses>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>Spearfishing_Spear</li>
+    </weaponTags>
+    <costList>
+      <WoodLog>40</WoodLog>
+      <Steel>15</Steel>
+    </costList>
+    <statBases>
+      <WorkToMake>7000</WorkToMake>
+      <Mass>1.9</Mass>
+      <Spearfishing_DivePower>0.85</Spearfishing_DivePower>
+    </statBases>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>18</power>
+        <armorPenetration>0.35</armorPenetration>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+      <displayPriority>306</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>

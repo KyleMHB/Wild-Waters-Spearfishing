@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The hatchery (fish recovery ticket 04, spec stories 19-27, ADR 0016). A powered building on land that turns animal feed
+       into fry. Feed is its own storage through CompRefuelable, not a hopper beside it: haulers fill it with vanilla's Refuel
+       job, the target-level gizmo and the feed bar come with it, and the comp saves the amount. Every allowed feed (hay,
+       kibble, raw plant food) is 0.05 nutrition a unit, so a unit of "fuel" is exactly 0.05 nutrition. The cost: with more
+       than one feed allowed, CompRefuelable refunds nothing when the hatchery is destroyed or deconstructed.
+       Tuning (CompProperties_Hatchery): a batch of 30 fry every 3 days from 240 feed. 240 feed is 12 nutrition; 30 raw fish
+       at 0.2 each is 6, half the feed's (with Odyssey a common fish is 0.25, so 7.5, about 62%). fuelCapacity 240 holds one
+       batch's feed. It exists only with fish stock management on (ManagementOnly, ADR 0015 revised). -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>Spearfishing_Hatchery</defName>
+    <label>hatchery</label>
+    <description>An aerated tank that raises fry from animal feed: hay, kibble or raw plant food. While powered and fed it fills a pail of fry every few days, and a hauler carries the pail to the body of fishing water you choose and releases the fry there. They join that water's fish stock at once, never past what the water can hold, and carry about half the nutrition of the feed that raised them.\n\nNeeds fish stock management turned on in the mod settings, and the Spearfishing and Electricity research.</description>
+    <graphicData>
+      <!-- Approved art; see art/hatchery/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Building/Hatchery</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <shadowData>
+        <volume>(1.8, 0.4, 1.8)</volume>
+      </shadowData>
+      <damageData>
+        <rect>(0.1,0.1,1.8,1.8)</rect>
+      </damageData>
+    </graphicData>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <tickerType>Rare</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-2</Beauty>
+    </statBases>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <designationCategory>Production</designationCategory>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <researchPrerequisites>
+      <li>Spearfishing_Spearfishing</li>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>120</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>240</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Hay</li>
+            <li>Kibble</li>
+          </thingDefs>
+          <categories>
+            <li>PlantFoodRaw</li>
+          </categories>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>240</initialConfigurableTargetFuelLevel>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <canEjectFuel>true</canEjectFuel>
+        <fuelLabel>feed</fuelLabel>
+        <fuelGizmoLabel>Feed</fuelGizmoLabel>
+        <outOfFuelMessage>Needs feed</outOfFuelMessage>
+      </li>
+      <li Class="Spearfishing.CompProperties_Hatchery">
+        <cycleDays>3</cycleDays>
+        <batchFish>30</batchFish>
+        <feedPerBatch>240</feedPerBatch>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>Spearfishing.PlaceWorker_ManagementOn</li>
+    </placeWorkers>
+    <modExtensions>
+      <li Class="Spearfishing.ManagementOnly" />
+    </modExtensions>
+  </ThingDef>
+
+  <!-- A full batch of fry: the pail a hauler carries from the hatchery to the water. No thing categories, so no stockpile
+       takes it and only the release job moves it. It saves its fish and its water, so a dropped pail is picked up again. -->
+  <ThingDef>
+    <defName>Spearfishing_FryBatch</defName>
+    <label>fry pail</label>
+    <description>A pail of young fish from a hatchery, waiting for a hauler to release them into a body of fishing water.</description>
+    <thingClass>Spearfishing.FryBatch</thingClass>
+    <category>Item</category>
+    <graphicData>
+      <!-- Approved art; see art/hatchery/APPROVAL.md. -->
+      <texPath>Things/Spearfishing/Item/FryBatch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <drawerType>MapMeshOnly</drawerType>
+    <altitudeLayer>Item</altitudeLayer>
+    <selectable>true</selectable>
+    <useHitPoints>true</useHitPoints>
+    <rotatable>false</rotatable>
+    <pathCost>14</pathCost>
+    <stackLimit>1</stackLimit>
+    <tradeability>None</tradeability>
+    <alwaysHaulable>false</alwaysHaulable>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>8</Mass>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Beauty>0</Beauty>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+    </comps>
+  </ThingDef>
+
+  <!-- Hauling: carry a fry pail to its water's edge and release the fry. -->
+  <WorkGiverDef>
+    <defName>Spearfishing_ReleaseFry</defName>
+    <label>release fry</label>
+    <giverClass>Spearfishing.WorkGiver_ReleaseFry</giverClass>
+    <workType>Hauling</workType>
+    <verb>release</verb>
+    <gerund>releasing</gerund>
+    <priorityInType>30</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+      <li>Moving</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>Spearfishing_ReleaseFry</defName>
+    <driverClass>Spearfishing.JobDriver_ReleaseFry</driverClass>
+    <reportString>releasing fry.</reportString>
+  </JobDef>
+
+</Defs>

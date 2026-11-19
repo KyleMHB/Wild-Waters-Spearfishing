@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Ticket 30: swim and dive sounds, played by Source/Audio/DiveSounds.cs for swimmers in view on the current map while the
+       dive visuals setting is on. Every clip is Core RimWorld audio, retuned quieter and shorter-ranged, about the loudness of
+       a footstep. No DLC clips and no audio of our own. -->
+
+  <!-- A quiet stroke while swimming at the surface: the wet cleaning clips, pitched down so they read as a hand in water. -->
+  <SoundDef>
+    <defName>Spearfishing_SwimStroke</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <muteWhenPaused>true</muteWhenPaused>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Interact/Work/Clean/Cleaning_Fluid</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>10~14</volumeRange>
+        <pitchRange>0.78~0.92</pitchRange>
+        <distRange>8~30</distRange>
+        <sustainLoop>false</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- A small splash as a diver leaves the surface: the bridge-collapse splash, much quieter and pitched up so it is small. -->
+  <SoundDef>
+    <defName>Spearfishing_DiveDown</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <muteWhenPaused>true</muteWhenPaused>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>Misc/BridgeCollapseWater</clipPath>
+          </li>
+        </grains>
+        <volumeRange>9~12</volumeRange>
+        <pitchRange>1.15~1.3</pitchRange>
+        <distRange>8~35</distRange>
+        <sustainLoop>false</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- Coming back up: vanilla's emerge-from-water clips, quieter than vanilla's 35. -->
+  <SoundDef>
+    <defName>Spearfishing_Surface</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <muteWhenPaused>true</muteWhenPaused>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/EmergeFromWater</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>15~18</volumeRange>
+        <pitchRange>0.95~1.1</pitchRange>
+        <distRange>8~35</distRange>
+        <sustainLoop>false</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <!-- One soft burst of bubbles per bubble cluster drawn: the moisture pump's gurgles, quiet and pitched up so they are small. -->
+  <SoundDef>
+    <defName>Spearfishing_Bubbles</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <muteWhenPaused>true</muteWhenPaused>
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>Misc/MoisturePump</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>8~11</volumeRange>
+        <pitchRange>1.3~1.6</pitchRange>
+        <distRange>6~25</distRange>
+        <sustainLoop>false</sustainLoop>
+      </li>
+    </subSounds>
+  </SoundDef>
+</Defs>

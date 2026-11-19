@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The spacer dive weapon (gear tiers ticket 07). Built as the band speargun: a plain vanilla ranged weapon, Verb_Shoot, a
+       projectile and no ammo or reload comp, so Combat Extended and similar mods can patch it the usual way; being ranged, its
+       dives use and train Shooting. In a fight it reaches 5.9 cells (vanilla's x.9 convention for a 6-cell range) and fires
+       one shot, then a 2.6 second reload, a little faster than the band speargun's 3. Its shot is a little harder than the band
+       speargun's and stays well under the charge rifle (three 16-damage shots, armor penetration 0.35, 27.9 cells), the
+       vanilla spacer gun a colony crafts.
+       Parent is BaseMakeableGun with only the Spearfishing_Spear tag, as the band speargun, so pawn generation never hands it
+       to raiders. Made at the fabrication bench, as the charge rifle. The recipe needs Spearfishing and Advanced fabrication
+       (ADR 0012): researchPrerequisite replaces the parent's Gunsmithing, and researchPrerequisites adds the second project. -->
+  <ThingDef ParentName="BaseMakeableGun">
+    <defName>Spearfishing_PneumaticSpeargun</defName>
+    <label>pneumatic speargun</label>
+    <description>A fabricated speargun: a graphite air barrel with plasteel fittings, charged by hand, that drives a steel shaft out of its muzzle. A diver lands more fish with it than with a band speargun, and dives with it train Shooting. In a fight it reaches a little further than the band speargun, hits a little harder and reloads a little faster, though it is still no match for a real gun. It needs no ammunition.\n\nNeeds the Spearfishing and Advanced fabrication research.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <!-- Approved art; see art/pneumatic-speargun/APPROVAL.md. equippedAngleOffset stays at the default 0, as on the approved sheet. -->
+      <texPath>Things/Spearfishing/Weapon/PneumaticSpeargun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <weaponClasses>
+      <li>RangedLight</li>
+    </weaponClasses>
+    <weaponTags Inherit="False">
+      <li>Spearfishing_Spear</li>
+    </weaponTags>
+    <costList>
+      <Plasteel>40</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <WorkToMake>18000</WorkToMake>
+      <Mass>2.4</Mass>
+      <AccuracyTouch>0.88</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.22</AccuracyLong>
+      <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+      <Spearfishing_DivePower>1.15</Spearfishing_DivePower>
+    </statBases>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <researchPrerequisites>
+        <li>AdvancedFabrication</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <displayPriority>308</displayPriority>
+    </recipeMaker>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Spearfishing_PneumaticSpeargunShaft</defaultProjectile>
+        <warmupTime>0.8</warmupTime>
+        <range>5.9</range>
+        <soundCast>Bow_Small</soundCast>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <!-- The pneumatic speargun's shaft in flight: vanilla's small arrow texture by path, as the band speargun's. -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>Spearfishing_PneumaticSpeargunShaft</defName>
+    <label>speargun shaft</label>
+    <graphicData>
+      <texPath>Things/Projectile/Arrow_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>RangedStab</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationBase>0.14</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

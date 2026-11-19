@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- The one recreation type for all sea recreation (ADR 0006, ADR 0007): snorkeling below and every dive on a work trip.
+       Waves defines no recreation type of its own, so this is ours. needsThing stays at its default (true) so the type
+       does not count towards a map's recreation variety on maps with no sea. -->
+  <JoyKindDef>
+    <defName>Spearfishing_Swimming</defName>
+    <label>swimming</label>
+  </JoyKindDef>
+
+  <!-- Snorkeling (ticket 17, ADR 0007): no spear, zone or work type, so pacifists snorkel too. -->
+  <JoyGiverDef>
+    <defName>Spearfishing_Snorkeling</defName>
+    <giverClass>Spearfishing.JoyGiver_Snorkel</giverClass>
+    <baseChance>1</baseChance>
+    <jobDef>Spearfishing_Snorkeling</jobDef>
+    <joyKind>Spearfishing_Swimming</joyKind>
+    <requiredCapacities>
+      <li>Moving</li>
+    </requiredCapacities>
+  </JoyGiverDef>
+
+  <JobDef>
+    <defName>Spearfishing_Snorkeling</defName>
+    <driverClass>Spearfishing.JobDriver_Snorkel</driverClass>
+    <reportString>snorkeling.</reportString>
+    <joyKind>Spearfishing_Swimming</joyKind>
+    <suspendable>false</suspendable>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+</Defs>

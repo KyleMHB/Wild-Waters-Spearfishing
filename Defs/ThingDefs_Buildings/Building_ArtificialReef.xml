@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Fish recovery ticket 02: the artificial reef, a steel frame sunk on bare sea floor that turns its cell to reef after 15 days
+       and removes itself (CompArtificialReef). The class is vanilla Building, so a save without the mod loses only a missing
+       def, like the gear. Steel only, a fixed 40 steel in a fixed steel colour, after Spearfishing and Smithing (the author's
+       pick, art/artificial-reef/APPROVAL.md). 40 steel is a little more than a steel sculpture's block of material: enough that
+       a reef is a choice, small enough to sink several on a coast. graphicData is the built texture in vanilla Steel's colour;
+       it shows as the blueprint and the menu icon, while the building itself is printed under the water by its comp.
+       No terrain affordance: neither ocean terrain has one a building needs, so the place worker decides where it goes. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>Spearfishing_ArtificialReef</defName>
+    <label>artificial reef</label>
+    <description>A welded steel frame sunk on bare sea floor, where reef growth can take hold. Over about a season it turns into reef and the frame disappears under it, leaving one more reef cell that speeds its water's fish regrowth. It never spreads.\n\nNeeds fish stock management turned on in the mod settings, and the Spearfishing research.</description>
+    <graphicData>
+      <texPath>Things/Spearfishing/Building/ArtificialReef/ArtificialReef</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <color>(105,105,105)</color>
+    </graphicData>
+    <uiIconPath>Things/Spearfishing/Building/ArtificialReef/ArtificialReef</uiIconPath>
+    <uiIconColor>(105,105,105)</uiIconColor>
+    <terrainAffordanceNeeded IsNull="True" />
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>0</pathCost>
+    <rotatable>false</rotatable>
+    <useHitPoints>true</useHitPoints>
+    <tickerType>Long</tickerType>
+    <canOverlapZones>true</canOverlapZones>
+    <castEdgeShadows>false</castEdgeShadows>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+    <clearBuildingArea>false</clearBuildingArea>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <costList>
+      <Steel>40</Steel>
+    </costList>
+    <building>
+      <isInert>true</isInert>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <filthLeaving IsNull="True" />
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationCategory>Misc</designationCategory>
+    <researchPrerequisites>
+      <li>Spearfishing_Spearfishing</li>
+      <li>Smithing</li>
+    </researchPrerequisites>
+    <placeWorkers>
+      <li>Spearfishing.PlaceWorker_ManagementOn</li>
+      <li>Spearfishing.PlaceWorker_ArtificialReef</li>
+    </placeWorkers>
+    <!-- Hidden, refused and its blueprints and frames cancelled while fish stock management is off (ADR 0015 revised). -->
+    <modExtensions>
+      <li Class="Spearfishing.ManagementOnly" />
+    </modExtensions>
+    <comps>
+      <li Class="Spearfishing.CompProperties_ArtificialReef">
+        <daysToReef>15</daysToReef>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

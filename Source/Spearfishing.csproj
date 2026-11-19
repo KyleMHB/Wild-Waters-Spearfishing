@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    1.7 (default): net9.0 against the installed RimWorld 1.7, output to 1.7/Assemblies.
+      dotnet build Source/Spearfishing.csproj -c Release
+    1.6: net472 against Krafs.Rimworld.Ref 1.6.4871, output to 1.6/Assemblies.
+      dotnet build Source/Spearfishing.csproj -c Release -p:RimWorldVersion=1.6
+    Waves is never referenced at compile time: the Waves bridge reaches it by reflection, so a Waves change cannot break loading.
+  -->
+  <PropertyGroup>
+    <AssemblyName>Spearfishing</AssemblyName>
+    <RootNamespace>Spearfishing</RootNamespace>
+    <LangVersion>12</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <OutputPath>..\$(RimWorldVersion)\Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <Deterministic>true</Deterministic>
+    <HarmonyPath Condition="'$(HarmonyPath)' == ''">E:\Steam\steamapps\workshop\content\294100\2009463077\$(RimWorldVersion)\Assemblies\0Harmony.dll</HarmonyPath>
+    <TranslateTool Condition="'$(TranslateTool)' == ''">$(MSBuildThisFileDirectory)..\..\RimWorldTranslate\rwtranslate.py</TranslateTool>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(RimWorldVersion)' == '1.7'">
+    <TargetFramework>net9.0</TargetFramework>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <NoStdLib>true</NoStdLib>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <RimWorldPath Condition="'$(RimWorldPath)' == ''">E:\Steam\steamapps\common\RimWorld</RimWorldPath>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.7'">
+    <Reference Include="$(RimWorldPath)\System.*.dll;$(RimWorldPath)\Assembly-CSharp.dll;$(RimWorldPath)\UnityStubs.dll;$(RimWorldPath)\Waylith.UnityCompat.dll;$(RimWorldPath)\Waylith.dll;$(RimWorldPath)\Brutal.Core.Numerics.dll;$(RimWorldPath)\Brutal.Core.Common.dll;$(RimWorldPath)\netstandard.dll" Exclude="$(RimWorldPath)\System.IO.Compression.Native.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(RimWorldVersion)' == '1.6'">
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(RimWorldVersion)' == '1.6'">
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(HarmonyPath)</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Compile Remove="obj\**;bin\**" />
+  </ItemGroup>
+
+  <Target Name="ValidateRimWorldVersion" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(RimWorldVersion)' != '1.6' and '$(RimWorldVersion)' != '1.7'" Text="RimWorldVersion must be 1.6 or 1.7." />
+  </Target>
+
+  <!-- Player-facing C# text must go through Translate(); the shared checker fails the build on a hardcoded English literal. -->
+  <Target Name="CheckTranslations" AfterTargets="Build" Condition="Exists('$(TranslateTool)')">
+    <Exec Command="python &quot;$(TranslateTool)&quot; --mod &quot;$(MSBuildThisFileDirectory)..&quot; check" />
+  </Target>
+</Project>

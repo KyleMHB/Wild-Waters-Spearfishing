@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Culling an urchin barren (threat events ticket 02): Spearfishing work using Melee, with no order needed. Ahead of
+       restoring and of trips in the work type, so a diver answers the barren before it spreads. -->
+  <WorkGiverDef>
+    <defName>Spearfishing_CullUrchins</defName>
+    <label>cull urchins</label>
+    <giverClass>Spearfishing.WorkGiver_CullUrchins</giverClass>
+    <workType>Spearfishing</workType>
+    <verb>cull</verb>
+    <gerund>culling urchins</gerund>
+    <priorityInType>70</priorityInType>
+    <!-- It scans the barren cells, not things. -->
+    <scanThings>false</scanThings>
+    <scanCells>true</scanCells>
+    <requiredCapacities>
+      <li>Manipulation</li>
+      <li>Moving</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>Spearfishing_CullUrchinsJob</defName>
+    <driverClass>Spearfishing.JobDriver_CullUrchins</driverClass>
+    <reportString>culling urchins.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+</Defs>

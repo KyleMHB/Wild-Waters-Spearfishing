@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- A medieval wetsuit of close-fitting leather. On the skin layer over torso, shoulders, arms and legs, so it takes the place
+       of a shirt and trousers and goes under any jacket, parka or armour. Waves ignores clothing warmth in the water, so the
+       suit keeps a diver warm through Waves' own Waves_WaterInsulation stat, which lowers Waves' water cold limit by that many
+       degrees. On land it insulates like a thin leather shirt; that warmth, like every garment's, counts for nothing in the sea. -->
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>Spearfishing_BasicWetsuit</defName>
+    <label>basic wetsuit</label>
+    <description>A close-fitting suit of oiled leather, stitched tight and sealed with tallow at the seams, covering the body, arms and legs. Ordinary clothing keeps nobody warm in the sea, but the suit keeps the sea's chill off the skin, so a diver can work much colder water before hypothermia sets in. It can be worn under a jacket or parka.</description>
+    <graphicData>
+      <!-- Approved art; see art/wetsuit/APPROVAL.md. Greyscale, tinted by the leather. -->
+      <texPath>Things/Spearfishing/Apparel/Wetsuit/Wetsuit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <techLevel>Medieval</techLevel>
+    <costStuffCount>60</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToMake>9000</WorkToMake>
+      <Mass>1.5</Mass>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.25</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <Waves_WaterInsulation>10</Waves_WaterInsulation>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <!-- One worn texture per adult body type: Wetsuit_<BodyType>_<dir>. -->
+      <wornGraphicPath>Things/Spearfishing/Apparel/Wetsuit/Wetsuit</wornGraphicPath>
+      <!-- No apparel tags: pawn generation must not hand wetsuits to raiders or traders' guards. -->
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+    </apparel>
+    <recipeMaker>
+      <researchPrerequisite>Spearfishing_Spearfishing</researchPrerequisite>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers Inherit="False">
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>4</Crafting>
+      </skillRequirements>
+      <displayPriority>252</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

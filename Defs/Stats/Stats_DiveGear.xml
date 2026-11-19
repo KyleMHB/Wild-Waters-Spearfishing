@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- On a pawn: how well a diver finds and spears fish, and how long each dive lasts. Neutral at 100%; the glass mask raises it
+       through an ordinary equippedStatOffset, so other mods can add their own. The dive roll multiplies its chance by it, and
+       each dive lasts that much longer (DiveRules.DiveTicksFor). -->
+  <StatDef>
+    <defName>Spearfishing_DiveSuccess</defName>
+    <label>dive success</label>
+    <description>How well this person finds and spears fish on a spearfishing dive, and how long they stay down. Each dive's chance of a catch is multiplied by it, and each dive lasts that much longer.</description>
+    <category>BasicsPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showOnAnimals>false</showOnAnimals>
+    <showOnMechanoids>false</showOnMechanoids>
+    <displayPriorityInCategory>2488</displayPriorityInCategory>
+  </StatDef>
+</Defs>
